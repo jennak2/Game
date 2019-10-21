@@ -1,0 +1,19 @@
+Day 1-2: Create Laberynth with walls that change randomly with each level
+      - keep track of blood drops and time 
+        - the blood trails should also be somewhat randomly placed within the laberynth for each level 
+        
+Day 3-5: Create flashlights and light sources 
+      - placed in different areas in each level 
+
+Day 6-7: create dectective 
+        - make coordinantes for their location 
+
+        - add movement to them 
+        
+Day 8-10: create killers 
+      - reuse some of the functions from the detective as far as movement 
+      - variable keeping track if player(dectective) is within region of light source and killers vision 
+      
+Day 11-12: Add multiplayer aspects 
+    - one player controls the movement of the flashlight 
+    - other player controls the movement of the detective 
