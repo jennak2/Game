@@ -1,0 +1,148 @@
+1)  - Flashlight: Difficulties in programming might include
+    that the flashlight needs to have a movable range of area that represents
+    the area that the killer is detected in.
+    Requires a function that tracks the area of the range and moves the area
+    along with the player. Also, the area should rotate along with the player.
+    Also, there should be a function that changes a variable within the killer
+    object so that the killer stops moving if it is in the range of the flashlight.
+
+    - Light objects in maze: Difficulties in programming include that
+    objects needs to keep track of if it is turned on or not, and the
+    locations of the lights objects are randomized every level. Also, it needs
+    to be able to detect if the killer is within the area range of the light.
+    Requires a function that detects the whether the killer is within the
+    light range. If they are, the function needs to change the variable
+    in the killer object that stops the killer from moving.
+
+    - Drops of blood in the maze: Difficulties include that the location
+    of the drops of blood needs to randomized in every level. Also, the
+    game needs to keep track of the number of drops of blood the player
+    collects.
+    Requires a function that increases the number of drops of blood the player
+    collected and displays it on the screen if the location of the player is
+    equal to the location of the drop of blood. Also, there should be a function
+    that calculates and randomizes the location of the blood for each level.
+
+    - Timer: Difficulties include that the time needs to be displayed on the screen
+    and also needs to keep track of the best times. Also needs to be reset when
+    the player dies.
+    Requires a function that constantly increases the time variable throughout the
+    game and resets when the player dies. Also needs a function that compares the
+    time with the best time.
+
+    - Killer: Difficulties include that the killer needs to be able to detect the
+    location of the player and move through the maze towards the player. Also needs
+    to be able to detect if there is a wall between the killer and player.
+    Requires a function that detects the location of the player. Also requires a
+    function that checks if the location of the killer is within the range of a
+    light source.
+
+    - Detective: Difficulties include the controls.
+    Requires a function that allows the player to control the detective using
+    w,a,s,d.
+
+    - Maze: Difficulties include that the maze needs to be randomized for each level.
+    Requires a function that randomizes the location of walls.
+
+    - Multiplayer mode: Difficulties include that both players need to be displayed
+    on the screen. Also, the second player needs to be able to control multiple
+    killers within the level.
+    Requires a function that allows the second player to control the killer using
+    the up arrow.
+
+2) The timer feature depends on an already pre-written timer function in javascript.
+   Also could use a pre-written code that allows the detective to be controlled
+   with w,a,s,d.
+   There weren't really any design assumptions that were actually entire features.
+
+3) #1: Detective - First priority because it is the feature that the player controls
+   and the feature contains many functions that needs to be coded first for other
+   features to work. Also, many of the functions the feature requires can be
+   reused for the killer feature.
+   #2: Killer - Second priority because it is the second biggest feature. Needs to
+   be coded before coding the flashlight/light features because these features
+   require the location of the killer.
+   #3: Flashlight - Third priority because it is a feature required for the game
+   to be playable. Also, the functions for the feature can be reused for the
+   light object feature.
+   #4: Light objects - Fourth priority because it is similar to the flashlight
+   feature and also, the functions required for this feature can possibly be reused
+   in the blood-drops feature.
+   #5, 6: Blood drops/Timer - These two features can be prioritized in any order.
+   Both features are not necessarily required for the game to be playable.
+   #7: Multiplayer - Last feature prioritized because only requires an addition to
+   killer feature that allows the killers to be controlled using the up-arrow.
+
+4) The most difficult items to program are the flashlight, the light objects
+in the maze, and the drops of blood. The flashlight and the light object should
+have similar functions, which would reduce the time needed to program them.
+Would need couple of hours to code the flashlight and the light objects.
+Programming the killer and the detective would also take a couple of hours.
+The drops of blood would take around an hour too. The timer and the multiplayer
+function shouldn't take too long to program. There aren't really any technical
+issues with the design.
+
+5) Time variable: Holds the time value. Should be a global variable. Doesn't require
+   any data structure.
+
+   Blood count variable: Holds the number of blood collected. Should be a global
+   variable. Doesn't require any data structure.
+
+   Best time variable: Holds the best time value. Should be a local variable.
+   Doesn't require any data structure.
+
+   Best blood count: Holds the number of most blood drops collected. Should be
+   a local variable. Doesn't require any data structure.
+
+   x-y-z Player coordinate: Keeps track of the detective's location within the maze.
+   Should change as the player controls the detective. Should be a global variable.
+   Could use an array to hold the x, y, z values.
+
+   x-y-z Killer coordinate: Keeps track of the killer's location. Should be a
+   global variable. Could also use an array to hold the x, y, z values.
+
+   Flashlight area coordinate: Keeps track of the area the flashlight shines.
+   Should be a global variable. Could use an array to hold the x, y, z values.
+
+   Killer in light: Keeps track whether the killer is within area of any light
+   source. Should be a global variable. Doesn't require any data structure.
+
+   Light object on variable: Keeps track of whether the player has turned on the
+   light object. Should be a local variable. Doesn't require any data structure.
+
+   Dead variable: Keeps track of when the player dies. Should be global variable.
+   Doesn't require any data structure.
+
+   Level variable: Keeps track of the level the player is on. Should be a global
+   variable. Doesn't require any data structure.
+
+   Out of maze variable: Keeps track whether the detective is out of the maze. If
+   set to true, should increase the level variable and this variable should be set
+   to false. Should be a global variable. Doesn't require any data structure.
+
+   Number of light objects variable: Keeps track of the number of light objects
+   inside the maze for each level. As the level increases, the number of light
+   objects should decrease. Should be a global variable. Doesn't require any data
+   structure.
+
+   Number of killers variable: Keeps track of the number of killers within the
+   level. Should decrease as the level increases. Should be a global variable.
+   Doesn't require any data structure.
+
+6) The function that changes the location of each killer should also call the
+function that determines whether the coordinate of the killer is within the
+area of any light source. If it is, the killer-in-light variable should be set
+to true and the killer should stop. Also, it should call a function to check if
+the location of the killer is equal to the detective. If it is, the dead variable
+should be set to true and the time and blood count variable should be displayed.
+
+The function that changes the coordinate of the detective along with the players
+control should call another function that changes the area the flashlight shines.
+Also, it should call a function that checks whether the coordinate of the detective
+is equal to the coordinate of a light object. If it is, the light-object-on variable
+should be set to true. Same with the blood drops, as the coordinates of the
+detective changes, it should call a function that checks if the coordinate of the
+detective is equal to the coordinate of a blood drop object. The blood-count variable
+should increase if it is equal. Also, when the dead-variable within the detective
+object is set to true, it should call a function that checks whether the blood-count
+and time variables are better than the best blood-count and time variables.
