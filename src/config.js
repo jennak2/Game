@@ -5,7 +5,7 @@ var GAME = {
   },
   started : true,
   level : 1
-}; 
+};
 
 var BLOOD = {
   collectedDrops : 0
@@ -23,5 +23,14 @@ var COORD = {
   x5 : Math.random()*600,
   y5 : Math.random()*600,
   x6 : Math.random()*600,
-  y6 : Math.random()*600
+  y6 : Math.random()*600,
+  x7 : Math.random()*600,
+  y7 : Math.random()*600,
+  x8 : Math.random()*600,
+  y8 : Math.random()*600
+};
+
+var LIGHT = {
+  x : COORD.x7,
+  y : COORD.y7
 };
