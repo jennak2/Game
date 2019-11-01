@@ -1,19 +1,19 @@
-Day 1-2: Create Laberynth with walls that change randomly with each level
-      - keep track of blood drops and time 
+Day 1-3: Create Laberynth with walls that change randomly with each level
+      - keep track of blood drops and time
         - the blood trails should also be somewhat randomly placed within the laberynth for each level (lines 17-24 in the tech spec)
-        
-Day 3-5: Create flashlights and light sources (lines 1-15 in tech spec)
-      - placed in different areas in each level 
+
+Day 4-5: Create flashlights and light sources (lines 1-15 in tech spec)
+      - placed in different areas in each level
 
 Day 6-7: create dectective (lines 40-42)
-        - make coordinantes for their location 
+        - make coordinantes for their location
 
-        - add movement to them 
-        
+        - add movement to them
+
 Day 8-10: create killers (lines 33-38)
-      - reuse some of the functions from the detective as far as movement 
-      - variable keeping track if player(dectective) is within region of light source and killers vision 
-      
+      - reuse some of the functions from the detective as far as movement
+      - variable keeping track if player(dectective) is within region of light source and killers vision
+
 Day 11-12: Add multiplayer aspects (look at end of readme)
-    - one player controls the movement of the flashlight 
-    - other player controls the movement of the detective 
+    - one player controls the movement of the flashlight
+    - other player controls the movement of the detective
