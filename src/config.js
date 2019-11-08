@@ -29,7 +29,15 @@ var COORD = {
   x8 : Math.random()*600,
   y8 : Math.random()*600
 };
-
+var DETECTIVE = {
+initialized : false,
+latest : {
+  x : 50,
+  y : 50,
+  v: 0,
+  a: .06,
+},
+};
 var LIGHT = {
   x : COORD.x7,
   y : COORD.y7

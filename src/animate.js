@@ -1,30 +1,68 @@
-function renderDetective (context) {
-  var canvas = document.getElementById('mainCanvas');
+function handleDetectiveAnimation() {
+  if (CONTROLS.detective.forward) {
+    DETECTIVE.v = -2.5;
+  }
+  if (DETECTIVE.v != 0) {
+    DETECTIVE.v += DETECTIVE.a;
+    }
+
+  if (CONTROLS.detective.backward){
+    DETECTIVE.y += 2*DETECTIVE.v;
+  }
+    else{
+      DETECTIVE.y += DETECTIVE.v;
+    }
+
+
+  if (CONTROLS.detective.rotateCounterClockwise) {
+    DETECTIVE.x -= 4;
+  }
+  if (CONTROLS.detective.rotateClockwise) {
+    DETECTIVE.x += 4;
+  }
+
+  // Check if asteroid is leaving the boundary, if so, switch sides
+  if (DETECTIVE.x < 0) {
+    DETECTIVE.x = 0;
+  } else if (DETECTIVE.x >  GAME.canvas.width) {
+    DETECTIVE.x = 600;
+  } else if (DETECTIVE.y < 0) {
+    DETECTIVE.y = 0;
+  } else if (DETECTIVE.y > GAME.canvas.height) {
+    DETECTIVE.y = 300;
+  }
+}
+
+function renderDetective (ctx) {
+  var canvas = document.getElementById('maze');
   var detectiveImage = new Image();
   detectiveImage.src = "detective-156961_960_720.png";
+  ctx.drawImage(detectiveImage,1,1,25,25);
 }
 
 function runGame() {
-  var canvas = document.getElementById('mainCanvas');
+  var canvas = document.getElementById('maze');
   var ctx = canvas.getContext('2d');
+  //ctx.clearRect(0, 0, 600, 300);
 
-function renderLight (context) {
-  var canvas = document.getElementById('mainCanvas');
+function renderLight (ctx) {
+  var canvas = document.getElementById('maze');
   var lightImage = new Image();
   lightImage.src = "download.jpg";
-  ctx.drawImage(lightImage,LIGHT.x,LIGHT.y,100,100);
+  ctx.drawImage(lightImage,LIGHT.x,LIGHT.y,25,25);
 }
 
   if (GAME.started) {
-
+      // handleDetectiveAnimation();
     // 1 - Reposition the objects
     //handleAirplaneMovement();
 
     // 2 - Clear the CANVAS
-    ctx.clearRect(0, 0, 600, 300);
+
 
     renderDetective(ctx);
     renderLight(ctx);
+
 
     // 3 draw the blood drops
       ctx.beginPath();
