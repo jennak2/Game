@@ -8,10 +8,11 @@ function initializeDetective() {
 
 
   DETECTIVE = {
-    x : 300,
+    x : 350,
     y : 150,
     v: 0,
     a: .06,
+    positions: [
       {
         x : 0,
        	y : 3

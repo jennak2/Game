@@ -30,10 +30,9 @@ var COORD = {
   y8 : Math.random()*600
 };
 var DETECTIVE = {
-initialized : false,
 latest : {
-  x : 50,
-  y : 50,
+  x : 1,
+  y : 1,
   v: 0,
   a: .06,
 },

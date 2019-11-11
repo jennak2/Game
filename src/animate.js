@@ -53,7 +53,7 @@ function renderLight (ctx) {
 }
 
   if (GAME.started) {
-      // handleDetectiveAnimation();
+    handleDetectiveAnimation();
     // 1 - Reposition the objects
     //handleAirplaneMovement();
 
