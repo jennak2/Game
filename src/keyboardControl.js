@@ -1,10 +1,9 @@
 var CONTROLS = {
   detective : {
-    forward : false,
-    back : false,
-    rotateClockwise : false,
-    rotateCounterClockwise : false,
-    pickWeapon: false
+    w : false,
+    a : false,
+    s : false,
+    d : false
   }
 
 };
@@ -12,19 +11,16 @@ var CONTROLS = {
 document.addEventListener('keydown', function(event) {
   switch (event.key) {
     case "w":
-      CONTROLS.detective.forward = true;
+      CONTROLS.detective.w = true;
       break;
     case "s":
-      CONTROLS.detective.backward = true;
+      CONTROLS.detective.s = true;
       break;
     case "a":
-      CONTROLS.detective.rotateCounterClockwise = true;
+      CONTROLS.detective.a = true;
       break;
     case "d":
-      CONTROLS.detective.rotateClockwise = true;
-      break;
-    case "p":
-      CONTROLS.detective.pickWeapon = true;
+      CONTROLS.detective.d = true;
       break;
     default:
       break;
@@ -35,19 +31,16 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('keyup', function(event) {
   switch (event.key) {
     case "w":
-      CONTROLS.detective.forward = false;
+      CONTROLS.detective.w = false;
       break;
     case "s":
-      CONTROLS.detective.backward = false;
+      CONTROLS.detective.s = false;
       break;
     case "a":
-      CONTROLS.detective.rotateCounterClockwise = false;
+      CONTROLS.detective.a = false;
       break;
     case "d":
-      CONTROLS.detective.rotateClockwise = false;
-      break;
-    case "p":
-      CONTROLS.detective.pickweapon = false;
+      CONTROLS.detective.d = false;
       break;
     default:
       break;

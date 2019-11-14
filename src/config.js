@@ -3,8 +3,9 @@ var GAME = {
     width : 600,
     height : 600
   },
-  started : true,
-  level : 1
+  started : false,
+  level : 1,
+  maze : null
 };
 
 var BLOOD = {
@@ -31,11 +32,12 @@ var COORD = {
 };
 var DETECTIVE = {
 latest : {
-  x : 1,
-  y : 1,
+  x : 7,
+  y : 7,
   v: 0,
   a: .06,
 },
+currentCell : null
 };
 var LIGHT = {
   x : COORD.x7,

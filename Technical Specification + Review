@@ -39,7 +39,7 @@
 
     - Detective: Difficulties include the controls.
     Requires a function that allows the player to control the detective using
-    w,a,s,d.
+    w,a,s,d.  
 
     - Maze: Difficulties include that the maze needs to be randomized for each level.
     Requires a function that randomizes the location of walls.

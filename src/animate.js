@@ -1,43 +1,32 @@
 function handleDetectiveAnimation() {
-  if (CONTROLS.detective.forward) {
-    DETECTIVE.v = -2.5;
+  /*if (CONTROLS.detective.w) {
   }
-  if (DETECTIVE.v != 0) {
-    DETECTIVE.v += DETECTIVE.a;
-    }
-
-  if (CONTROLS.detective.backward){
-    DETECTIVE.y += 2*DETECTIVE.v;
+  if (CONTROLS.detective.a){
   }
-    else{
-      DETECTIVE.y += DETECTIVE.v;
-    }
-
-
-  if (CONTROLS.detective.rotateCounterClockwise) {
-    DETECTIVE.x -= 4;
+  if (CONTROLS.detective.s) {
   }
-  if (CONTROLS.detective.rotateClockwise) {
-    DETECTIVE.x += 4;
+  if (CONTROLS.detective.d) {
   }
 
   // Check if asteroid is leaving the boundary, if so, switch sides
-  if (DETECTIVE.x < 0) {
-    DETECTIVE.x = 0;
-  } else if (DETECTIVE.x >  GAME.canvas.width) {
-    DETECTIVE.x = 600;
-  } else if (DETECTIVE.y < 0) {
-    DETECTIVE.y = 0;
-  } else if (DETECTIVE.y > GAME.canvas.height) {
-    DETECTIVE.y = 300;
-  }
+  if (DETECTIVE.latest.x < 0) {
+    DETECTIVE.latest.x = 0;
+  } else if (DETECTIVE.latest.x >  575) {
+    DETECTIVE.latest.x = 575;
+  } else if (DETECTIVE.latest.y < 0) {
+    DETECTIVE.latest.y = 0;
+  } else if (DETECTIVE.latest.y > 575) {
+    DETECTIVE.latest.y = 575;
+  }*/
+  DETECTIVE.latest.x = DETECTIVE.currentCell.x + 5;
+  DETECTIVE.latest.y = DETECTIVE.currentCell.y + 5;
 }
 
 function renderDetective (ctx) {
   var canvas = document.getElementById('maze');
   var detectiveImage = new Image();
   detectiveImage.src = "detective-156961_960_720.png";
-  ctx.drawImage(detectiveImage,1,1,25,25);
+ctx.drawImage(detectiveImage,DETECTIVE.latest.x,DETECTIVE.latest.y,10,10);
 }
 
 function runGame() {
@@ -53,6 +42,7 @@ function renderLight (ctx) {
 }
 
   if (GAME.started) {
+   ctx.clearRect(DETECTIVE.latest.x, DETECTIVE.latest.y, 10, 10);
     handleDetectiveAnimation();
     // 1 - Reposition the objects
     //handleAirplaneMovement();
@@ -65,39 +55,16 @@ function renderLight (ctx) {
 
 
     // 3 draw the blood drops
+
+      ctx.fillText("x: " + DETECTIVE.latest.x + " y: " + DETECTIVE.latest.y + " a: " + DETECTIVE.latest.a +" v: " + DETECTIVE.latest.v, 135, 200);
       ctx.beginPath();
       ctx.lineWidth = "6";
       ctx.strokeStyle = "red";
       ctx.rect(COORD.x1, COORD.y1, 5, 5);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.lineWidth = "6";
-      ctx.strokeStyle = "red";
       ctx.rect(COORD.x2, COORD.y2, 5, 5);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.lineWidth = "6";
-      ctx.strokeStyle = "red";
       ctx.rect(COORD.x3, COORD.y3, 5, 5);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.lineWidth = "6";
-      ctx.strokeStyle = "red";
       ctx.rect(COORD.x4, COORD.y4, 5, 5);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.lineWidth = "6";
-      ctx.strokeStyle = "red";
       ctx.rect(COORD.x5, COORD.y5, 5, 5);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.lineWidth = "6";
-      ctx.strokeStyle = "red";
       ctx.rect(COORD.x6, COORD.y6, 5, 5);
       ctx.stroke();
 

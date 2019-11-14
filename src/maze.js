@@ -27,6 +27,10 @@ var Maze = function(doc, elemId) {
       self.generator.generate();
     },
 
+    getGenerator: function () {
+      return self.generator;
+    },
+
     draw: function() {
       this.drawBorders();
       this.drawMaze();
