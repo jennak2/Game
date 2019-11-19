@@ -44,3 +44,15 @@ var LIGHT = {
   x : COORD.x7,
   y : COORD.y7
 };
+var KILLER = {
+  latest : {
+    x : 7,
+    y : 7,
+    v: 0,
+    a: .06,
+  },
+  currentCell : null,
+  neigbors : null,
+  isInLightSource : false,
+  direction : null
+}

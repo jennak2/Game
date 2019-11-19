@@ -48,12 +48,60 @@ function handleDetectiveAnimation() {
   DETECTIVE.latest.x = DETECTIVE.currentCell.getX() * GAME.maze.getCellWidth() + 5;
 
 }
+function handleKillerAnimation() {
+  KILLER.neighbors =  GAME.maze.getGenerator().graph.cellDisconnectedNeighbors(KILLER.currentCell);
+  var cellToAdd = null;
+  KILLER.direction = Math.floor(Math.random() * 4);
+  if (KILLER.direction == 0) {
+    for (var i = 0; i < KILLER.neighbors.length; i++){
+      var c = KILLER.neighbors[i];
+      if (KILLER.currentCell.getX() + 1== c.getX()){
+        cellToAdd = c;
+      }
+    }
+  }
+  else if (KILLER.direction ==1) {
+    for (var i = 0; i < KILLER.neighbors.length; i++){
+      var c = KILLER.neighbors[i];
+      if (KILLER.currentCell.getY() - 1== c.getY()){
+        cellToAdd = c;
+      }
+    }
+  }
+  else if (KILLER.direction == 2) {
+    for (var i = 0; i < KILLER.neighbors.length; i++){
+      var c = KILLER.neighbors[i];
+      if (KILLER.currentCell.getX() - 1== c.getX()){
+        cellToAdd = c;
+      }
+    }
+  }
+  else if (KILLER.direction == 3) {
+    for (var i = 0; i < KILLER.neighbors.length; i++){
+      var c = KILLER.neighbors[i];
+      if (KILLER.currentCell.getY() + 1== c.getY()){
+        cellToAdd = c;
+      }
+    }
+  }
+  if (cellToAdd != null){
+    KILLER.currentCell = cellToAdd;
+  }
+  KILLER.latest.y = KILLER.currentCell.getY() * GAME.maze.getCellHeight() + 5;
+  KILLER.latest.x = KILLER.currentCell.getX() * GAME.maze.getCellWidth() + 5;
 
+}
 function renderDetective (ctx) {
-  var canvas = document.getElementById('maze');
   var detectiveImage = new Image();
   detectiveImage.src = "detective-156961_960_720.png";
   ctx.drawImage(detectiveImage,DETECTIVE.latest.x,DETECTIVE.latest.y,10,10);
+}
+function renderKiller (ctx) {
+  ctx.beginPath();
+  ctx.lineWidth = "1";
+  ctx.fillRect(KILLER.latest.x, KILLER.latest.y, 10, 10);
+  ctx.stroke();
+
 }
 function renderLight (ctx) {
   var canvas = document.getElementById('maze');
@@ -68,7 +116,9 @@ function runGame() {
   //ctx.clearRect(0, 0, 600, 300);
   if (GAME.started) {
    ctx.clearRect(DETECTIVE.latest.x, DETECTIVE.latest.y, 10, 10);
+   ctx.clearRect(KILLER.latest.x, KILLER.latest.y, 10, 10);
     handleDetectiveAnimation();
+    handleKillerAnimation();
     // 1 - Reposition the objects
     //handleAirplaneMovement();
 
@@ -76,6 +126,7 @@ function runGame() {
 
 
     renderDetective(ctx);
+    renderKiller(ctx);
     renderLight(ctx);
 
 
@@ -97,7 +148,7 @@ function runGame() {
       ctx.rect(130, 190, 100, 10);
       ctx.stroke();
       if (DETECTIVE.currentCell != null){
-        ctx.fillText("x: " + DETECTIVE.latest.x + " y: " + DETECTIVE.latest.y + " cx: " + DETECTIVE.currentCell.getX()+" cy: " + DETECTIVE.currentCell.getY(), 135, 200);
+        ctx.fillText("d: " +KILLER.direction, 135, 200);
       }
 
     // 3 - Draw new items
