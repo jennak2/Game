@@ -37,7 +37,8 @@ latest : {
   v: 0,
   a: .06,
 },
-currentCell : null
+currentCell : null,
+neigbors : null
 };
 var LIGHT = {
   x : COORD.x7,
