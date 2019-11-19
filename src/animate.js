@@ -49,46 +49,52 @@ function handleDetectiveAnimation() {
 
 }
 function handleKillerAnimation() {
-  KILLER.neighbors =  GAME.maze.getGenerator().graph.cellDisconnectedNeighbors(KILLER.currentCell);
-  var cellToAdd = null;
-  KILLER.direction = Math.floor(Math.random() * 4);
-  if (KILLER.direction == 0) {
-    for (var i = 0; i < KILLER.neighbors.length; i++){
-      var c = KILLER.neighbors[i];
-      if (KILLER.currentCell.getX() + 1== c.getX()){
-        cellToAdd = c;
+  if (KILLER.timer == 0){
+    KILLER.timer = 20;
+    KILLER.neighbors =  GAME.maze.getGenerator().graph.cellDisconnectedNeighbors(KILLER.currentCell);
+    var cellToAdd = null;
+    KILLER.direction = Math.floor(Math.random() * 4);
+    if (KILLER.direction == 0) {
+      for (var i = 0; i < KILLER.neighbors.length; i++){
+        var c = KILLER.neighbors[i];
+        if (KILLER.currentCell.getX() + 1== c.getX()){
+          cellToAdd = c;
+        }
       }
     }
-  }
-  else if (KILLER.direction ==1) {
-    for (var i = 0; i < KILLER.neighbors.length; i++){
-      var c = KILLER.neighbors[i];
-      if (KILLER.currentCell.getY() - 1== c.getY()){
-        cellToAdd = c;
+    else if (KILLER.direction ==1) {
+      for (var i = 0; i < KILLER.neighbors.length; i++){
+        var c = KILLER.neighbors[i];
+        if (KILLER.currentCell.getY() - 1== c.getY()){
+          cellToAdd = c;
+        }
       }
     }
-  }
-  else if (KILLER.direction == 2) {
-    for (var i = 0; i < KILLER.neighbors.length; i++){
-      var c = KILLER.neighbors[i];
-      if (KILLER.currentCell.getX() - 1== c.getX()){
-        cellToAdd = c;
+    else if (KILLER.direction == 2) {
+      for (var i = 0; i < KILLER.neighbors.length; i++){
+        var c = KILLER.neighbors[i];
+        if (KILLER.currentCell.getX() - 1== c.getX()){
+          cellToAdd = c;
+        }
       }
     }
-  }
-  else if (KILLER.direction == 3) {
-    for (var i = 0; i < KILLER.neighbors.length; i++){
-      var c = KILLER.neighbors[i];
-      if (KILLER.currentCell.getY() + 1== c.getY()){
-        cellToAdd = c;
+    else if (KILLER.direction == 3) {
+      for (var i = 0; i < KILLER.neighbors.length; i++){
+        var c = KILLER.neighbors[i];
+        if (KILLER.currentCell.getY() + 1== c.getY()){
+          cellToAdd = c;
+        }
       }
     }
+    if (cellToAdd != null){
+      KILLER.currentCell = cellToAdd;
+    }
+    KILLER.latest.y = KILLER.currentCell.getY() * GAME.maze.getCellHeight() + 5;
+    KILLER.latest.x = KILLER.currentCell.getX() * GAME.maze.getCellWidth() + 5;
   }
-  if (cellToAdd != null){
-    KILLER.currentCell = cellToAdd;
+  else{
+    KILLER.timer --;
   }
-  KILLER.latest.y = KILLER.currentCell.getY() * GAME.maze.getCellHeight() + 5;
-  KILLER.latest.x = KILLER.currentCell.getX() * GAME.maze.getCellWidth() + 5;
 
 }
 function renderDetective (ctx) {
@@ -113,6 +119,7 @@ function renderLight (ctx) {
 function runGame() {
   var canvas = document.getElementById('maze');
   var ctx = canvas.getContext('2d');
+  ctx.globalAlpha = 1;
   //ctx.clearRect(0, 0, 600, 300);
   if (GAME.started) {
    ctx.clearRect(DETECTIVE.latest.x, DETECTIVE.latest.y, 10, 10);
@@ -143,12 +150,12 @@ function runGame() {
       ctx.rect(COORD.x5, COORD.y5, 5, 5);
       ctx.rect(COORD.x6, COORD.y6, 5, 5);
 
-      ctx.strokeStyle = "white";
+      //ctx.strokeStyle = "white";
       ctx.lineWidth = "10";
-      ctx.rect(130, 190, 100, 10);
+//      ctx.rect(130, 190, 100, 10);
       ctx.stroke();
       if (DETECTIVE.currentCell != null){
-        ctx.fillText("d: " +KILLER.direction, 135, 200);
+        //ctx.fillText("t: " +KILLER.timer, 135, 200);
       }
 
     // 3 - Draw new items

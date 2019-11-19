@@ -7,6 +7,7 @@ function Start(){
   DETECTIVE.currentCell = maze.getGenerator().graph.getCellAt(0, 0);
 
   KILLER.currentCell = maze.getGenerator().graph.getCellAt(20, 20);
+  KILLER.timer = 0;
   //var x;
   //initializeDetective();
 
