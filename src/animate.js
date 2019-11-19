@@ -119,7 +119,6 @@ function renderLight (ctx) {
 function runGame() {
   var canvas = document.getElementById('maze');
   var ctx = canvas.getContext('2d');
-  ctx.globalAlpha = 1;
   //ctx.clearRect(0, 0, 600, 300);
   if (GAME.started) {
    ctx.clearRect(DETECTIVE.latest.x, DETECTIVE.latest.y, 10, 10);

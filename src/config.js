@@ -54,5 +54,6 @@ var KILLER = {
   currentCell : null,
   neigbors : null,
   isInLightSource : false,
-  direction : null
+  direction : null,
+  timer : 0
 }
