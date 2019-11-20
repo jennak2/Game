@@ -38,22 +38,6 @@
     <script src="src/maze.js"></script>
     <script src="src/keyboardControl.js"></script>
     <script src="src/animate.js"></script>
-    <script>
-        var maze = new Maze(document, 'maze');
-
-        setTimeout(function() {
-            maze.generate();
-            maze.draw();
-
-            $("#solve").show();
-        }, 1000);
-
-        $(function() {
-            $('#solve').click(function() {
-                maze.solve();
-            });
-        });
-    </script>
     <body onload="Start()">
   <!-- <canvas id="maze" width="600" height="600" style="border:1px solid black;">
   </canvas> -->

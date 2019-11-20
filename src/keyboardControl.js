@@ -1,32 +1,45 @@
 var CONTROLS = {
   detective : {
-    forward : false,
-    back : false,
-    rotateClockwise : false,
-    rotateCounterClockwise : false,
-    pickWeapon: false
-  }
+    w : false,
+    a : false,
+    s : false,
+    d : false
+  },
+  pressing : false
 
 };
 
 document.addEventListener('keydown', function(event) {
   switch (event.key) {
     case "w":
-      CONTROLS.detective.forward = true;
+      if (!CONTROLS.pressing) {
+        CONTROLS.pressing = true;
+        CONTROLS.detective.w = true;
+      }
       break;
     case "s":
-      CONTROLS.detective.backward = true;
+    if (!CONTROLS.pressing) {
+      CONTROLS.pressing = true;
+      CONTROLS.detective.s = true;
+    }
       break;
     case "a":
-      CONTROLS.detective.rotateCounterClockwise = true;
+    if (!CONTROLS.pressing) {
+      CONTROLS.pressing = true;
+      CONTROLS.detective.a = true;
+    }
       break;
     case "d":
-      CONTROLS.detective.rotateClockwise = true;
-      break;
-    case "p":
-      CONTROLS.detective.pickWeapon = true;
+    if (!CONTROLS.pressing) {
+      CONTROLS.pressing = true;
+      CONTROLS.detective.d = true;
+    }
       break;
     default:
+    CONTROLS.detective.d = false;
+    CONTROLS.detective.w = false;
+    CONTROLS.detective.a = false;
+    CONTROLS.detective.s = false;
       break;
   }
 });
@@ -35,19 +48,20 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('keyup', function(event) {
   switch (event.key) {
     case "w":
-      CONTROLS.detective.forward = false;
+      CONTROLS.detective.w = false;
+      CONTROLS.pressing = false;
       break;
     case "s":
-      CONTROLS.detective.backward = false;
+      CONTROLS.detective.s = false;
+      CONTROLS.pressing = false;
       break;
     case "a":
-      CONTROLS.detective.rotateCounterClockwise = false;
+      CONTROLS.detective.a = false;
+      CONTROLS.pressing = false;
       break;
     case "d":
-      CONTROLS.detective.rotateClockwise = false;
-      break;
-    case "p":
-      CONTROLS.detective.pickweapon = false;
+      CONTROLS.detective.d = false;
+      CONTROLS.pressing = false;
       break;
     default:
       break;

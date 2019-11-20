@@ -12,11 +12,16 @@ var Cell = function(x, y) {
   this.visit = function () {
     this.visited = true;
   };
-
+  this.getX = function () {
+    return this.x;
+  };
+  this.getY = function () {
+    return this.y;
+  };
   this.score = function () {
   	var total = 0;
   	var p = this.parent;
-  	
+
   	while(p) {
   		++total;
   		p = p.parent;
@@ -27,13 +32,13 @@ var Cell = function(x, y) {
   this.pathToOrigin = function () {
   	var path = [this];
   	var p = this.parent;
-  	
+
   	while(p) {
   		path.push(p);
   		p = p.parent;
   	}
   	path.reverse();
-  	
+
   	return path;
   };
 };
