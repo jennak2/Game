@@ -47,6 +47,7 @@ function handleDetectiveAnimation() {
   DETECTIVE.latest.y = DETECTIVE.currentCell.getY() * GAME.maze.getCellHeight() + 5;
   DETECTIVE.latest.x = DETECTIVE.currentCell.getX() * GAME.maze.getCellWidth() + 5;
 
+
 }
 function handleKillerAnimation() {
   if (KILLER.timer == 0){
@@ -95,7 +96,6 @@ function handleKillerAnimation() {
   else{
     KILLER.timer --;
   }
-
 }
 function renderDetective (ctx) {
   var detectiveImage = new Image();
@@ -120,6 +120,13 @@ function runGame() {
   var canvas = document.getElementById('maze');
   var ctx = canvas.getContext('2d');
   //ctx.clearRect(0, 0, 600, 300);
+  if(KILLER.latest.y == DETECTIVE.latest.y && KILLER.latest.x ==DETECTIVE.latest.x){
+      GAME.started == false;
+  }
+  if(DETECTIVE.latest.x == 585 && DETECTIVE.latest.y == 585){
+    GAME.started == false;
+  }
+
   if (GAME.started) {
    ctx.clearRect(DETECTIVE.latest.x, DETECTIVE.latest.y, 10, 10);
    ctx.clearRect(KILLER.latest.x, KILLER.latest.y, 10, 10);
@@ -157,12 +164,20 @@ function runGame() {
         //ctx.fillText("t: " +KILLER.timer, 135, 200);
       }
 
-    // 3 - Draw new items
-
 
   } else {
-    //ctx.font = "30px Arial";
-    //ctx.fillText("Game Over      Level " + GAME.level, 135, 200);
+    ctx.clearRect(0, 0, 600, 300);
+    if(DETECTIVE.latest.y==585 && DETECTIVE.latest.x==585){
+      ctx.font = "30px Arial";
+      ctx.fillText("you won!     Level" + GAME.level, 135, 200);
+    }
+    else {
+      ctx.font = "30px Arial";
+      ctx.fillText("you lost!    Level" + GAME.level, 135, 200);
+      GAME.level++;
+    }
+
+
   }
   window.requestAnimationFrame(runGame);
 }
