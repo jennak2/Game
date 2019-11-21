@@ -57,3 +57,16 @@ var KILLER = {
   direction : null,
   timer : 0
 }
+var KILLER1 = {
+  latest : {
+    x : 7,
+    y : 7,
+    v: 0,
+    a: .06,
+  },
+  currentCell : null,
+  neigbors : null,
+  isInLightSource : false,
+  direction : null,
+  timer : 0
+}
