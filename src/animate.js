@@ -197,7 +197,11 @@ function runGame() {
 
 
     // 3 draw the blood drops
-
+      // ctx.beginPath();
+      // ctx.lineWidth = "6";
+      // ctx.strokeSyle = "red";
+      // ctx.rect(DETECTIVE.latest.x + 5, DETECTIVE.latest.y, 10,10);
+      // ctx.lineWidth = "10";
 
       ctx.beginPath();
       ctx.lineWidth = "6";
@@ -222,6 +226,10 @@ function runGame() {
       if(DETECTIVE.latest.x == 585 && DETECTIVE.latest.y == 585){
         GAME.started = false;
       }
+      if(DETECTIVE.latest.x == COORD.x1 && DETECTIVE.latest.y == COORD.y1 ||DETECTIVE.latest.x == COORD.x2 && DETECTIVE.latest.y == COORD.y2 || DETECTIVE.latest.x == COORD.x3 && DETECTIVE.latest.y == COORD.y3 || DETECTIVE.latest.x == COORD.x4 && DETECTIVE.latest.y == COORD.y4|| DETECTIVE.latest.x == COORD.x5 && DETECTIVE.latest.y == COORD.y5|| DETECTIVE.latest.x == COORD.x6 && DETECTIVE.latest.y == COORD.y6) {
+        BLOOD.collectedDrops++;
+      }
+      	ctx.fillText("Blood Collected : "+ BLOOD.collectedDrops ,110, 620);
 
   } else {
     //ctx.clearRect(0, 0, 600, 300);
