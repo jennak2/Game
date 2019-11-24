@@ -229,17 +229,18 @@ function runGame() {
       if(DETECTIVE.latest.x == COORD.x1 && DETECTIVE.latest.y == COORD.y1 ||DETECTIVE.latest.x == COORD.x2 && DETECTIVE.latest.y == COORD.y2 || DETECTIVE.latest.x == COORD.x3 && DETECTIVE.latest.y == COORD.y3 || DETECTIVE.latest.x == COORD.x4 && DETECTIVE.latest.y == COORD.y4|| DETECTIVE.latest.x == COORD.x5 && DETECTIVE.latest.y == COORD.y5|| DETECTIVE.latest.x == COORD.x6 && DETECTIVE.latest.y == COORD.y6) {
         BLOOD.collectedDrops++;
       }
-      	ctx.fillText("Blood Collected : "+ BLOOD.collectedDrops ,110, 620);
+      // ctx.font = "30px Arial";
+      // ctx.fillText("Blood Collected : " + BLOOD.collectedDrops, 135, 200);
 
   } else {
     //ctx.clearRect(0, 0, 600, 300);
     if(DETECTIVE.latest.y==585 && DETECTIVE.latest.x==585){
       ctx.font = "30px Arial";
-      ctx.fillText("you won!     Level" + GAME.level, 135, 200);
+      ctx.fillText("you won!     Level" + GAME.level + "Blood Collected : " + BLOOD.collectedDrops, 135, 200);
     }
     if(KILLER.latest.y == DETECTIVE.latest.y && KILLER.latest.x ==DETECTIVE.latest.x && GAME.maze!=null){
       ctx.font = "30px Arial";
-      ctx.fillText("you lost!    Level" + GAME.level, 135, 200);
+      ctx.fillText("you lost!    Level" + GAME.level + "Blood Collected : " + BLOOD.collectedDrops, 135, 200);
       GAME.level++;
     }
 
